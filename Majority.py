@@ -1,27 +1,16 @@
-import sys
+def Majority_Tester(array):
 
-def Majority(a):
-    counts={}
-
-    for i in a:
-        counts.update({i:0})
-    for i in a:
-        if i in counts:
-            counts[i]+=1
-    #print (counts)
-    val_lst=counts.values()
-    for i in val_lst:
-        if i>(len(a))/2:
-            return 1
-        else:
-            continue
-    return -1
-
-
-if __name__ == '__main__':
-    input = sys.stdin.read()
-    n, *a = list(map(int, input.split()))
-    if Majority(a) != -1:
-        print(1)
+    def freq_checker(arr):
+        highest_count=arr.count(0)
+        for i in arr:
+            if arr.count(i)>=highest_count:
+                highest_count=arr.count(i)
+                most_frequent=i
+        print ('the most frequently occurring number in', arr, 'is', most_frequent)
+        return most_frequent
+    ind=freq_checker(array)
+    if array.count(ind)>len(array)/2:
+        return 1
     else:
-        print(0)
+        return 0
+    
